@@ -1,0 +1,62 @@
+.auth {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background: #AFD4C0;
+}
+
+.login-bg {
+    margin: 0 auto;
+    width: 50%;
+    height: 100vh;
+    background: white;
+}
+
+
+.logo {
+    margin-top: 150px;
+}
+
+.user {
+    text-align: left;
+    margin-left: 150px;
+    margin-bottom: 2px;
+}
+
+.pass {
+    text-align: left;
+    margin-left: 150px;
+    margin-bottom: 2px;
+
+}
+
+.auth-input {
+    width: 65%;
+    border-color: 1px solid #3B5249;
+}
+
+.auth-btn {
+    margin-top: 20px;
+}
+
+.login-btn {
+    background: #8AEA92;
+    width: 120px;
+    height: 35px;
+    margin-right: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.register-btn {
+    background: #3B5249;
+    width: 120px;
+    height: 35px;
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
