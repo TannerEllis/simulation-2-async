@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Dashboard.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
 
@@ -31,7 +32,7 @@ class Dashboard extends Component {
                     <div className="logout"><h5>Logout</h5></div>
                 </div>
                 <div className="dashboard-body">
-                    <button className="add-btn">Add new property</button>
+                  <Link to="/wizard/1"><button className="add-btn">Add new property</button></Link>
                     <br />
                     <h3 className="desired-rent">List properties with "desired rent" greater than: $</h3>
                     <input className="number-input" type="text" placeholder="0" onChange={this.handleChangePrice} value={this.state.price} />

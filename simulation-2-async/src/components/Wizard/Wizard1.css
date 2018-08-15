@@ -1,0 +1,79 @@
+.wizard {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #AFD4C0;
+    overflow: hidden;
+}
+
+.header-logo {
+    height: 27px;
+    margin-top: 22px;
+    margin-right: 25px;
+    float: left;
+}
+
+.houser-sub {
+    margin-right: 5px;
+}
+
+.dashboard-sub {
+    margin-left: 5px;
+    font-weight: 300;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    background: #519872;
+    color: white;
+    text-align: left;
+}
+
+.logout {
+    margin-left: 26%;      
+}
+
+.logout:hover {
+    cursor: pointer;
+}
+
+.dashboard-body {
+    width: 50%;
+    height: 100vh;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #e2f3ea, #ffffff);
+}
+
+.add-new-listing {
+    margin-top: 0;
+}
+
+.cancel-btn {
+    background: #FEC2C2;
+    border: none;
+    border-radius: 5px;
+    width: 60px;
+    height: 25px;
+    color: black;
+    font-weight: 700;
+}
+
+.prop-name {
+    margin: 0;
+}
+
+.prop-desc {
+    margin: 0;
+}
+.property-name-input {
+    width: 55%;
+}
+
+.property-desc-input {
+    width: 55%;
+    height: 75px;
+}
+
