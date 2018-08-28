@@ -1,0 +1,14 @@
+.desired-rent {
+    width: 65%;
+}
+
+.complete {
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 2px;
+    background: #8AEA92;
+    color: black;
+    font-weight: 500;
+    margin-left: 121px;
+}

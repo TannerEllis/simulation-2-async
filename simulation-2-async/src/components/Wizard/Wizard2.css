@@ -1,0 +1,82 @@
+.city-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.city-title {
+    text-align: left;
+    width: 15%;
+    margin: 0 auto;
+}
+
+.state-title {
+    text-align: left;
+    width: 35%;
+    margin-right: 75px;
+    padding-left: 5px;
+    
+}
+
+.city-state {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-left: 65px;
+    
+}
+
+.zip-title {
+    margin: 0 auto;
+    width: 63%;
+    text-align: left;
+    
+}
+
+.input-address {
+    width: 65%;
+    margin-bottom: 25px;
+}
+
+.input-city {
+    width: 30%;
+    margin-bottom: 25px;
+}
+
+.input-state {
+    width: 30%;
+    margin-bottom: 25px;
+}
+
+.input-zip {
+    width: 21%;
+    margin-bottom: 25px;
+    margin-right: 265px;
+    
+}
+
+.btn-footer {
+    margin-top: 25px;
+}
+
+.next-step {
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 2px;
+    background: #3B5249;
+    color: white;
+    font-weight: 500;
+    margin-left: 121px;
+}
+
+.prev-step {
+    width: 100px;
+    height: 25px;
+    border: none;
+    border-radius: 2px;
+    background: #3B5249;
+    color: white;
+    font-weight: 500;
+    margin-right: 121px;
+}

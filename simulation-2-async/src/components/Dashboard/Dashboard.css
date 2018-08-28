@@ -58,20 +58,25 @@
     border: none;
     border-radius: 5px;
 }
+.desired-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
 .desired-rent {
     font-weight: 300;
     flex-wrap: wrap;
-    float: left;
-    margin-left: 70px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+
 }
 
 .number-input {
     width: 50px;
     height: 20px;
+    margin-top: 20px;
+    margin-left: -22px;
     margin-right: 10px;
-    margin-top: 20px; 
 }
 
 .filter-btn {
@@ -80,7 +85,9 @@
     border-radius: 5px;
     width: 65px;
     height: 26px;
+    margin-left: 2px;
     margin-right: 5px;
+    margin-top: 20px;
 }
 
 .reset-btn {
@@ -90,8 +97,9 @@
     border-radius: 5px;
     width: 65px;
     height: 26px;
-    margin-left: 5px;
-    margin-right: 50px;
+    margin-left: 5 px;
+    margin-right: 5px;
+    margin-top: 20px;
 }
 
 hr {
@@ -102,6 +110,10 @@ hr {
 
 .home-listings {
     float: left;
-    margin-left: 60px;
+    margin-left: 40px;
     font-weight: 700;
+}
+
+h4 {
+    margin: 0;
 }

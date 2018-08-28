@@ -8,7 +8,7 @@
 
 .header-logo {
     height: 27px;
-    margin-top: 22px;
+    margin-bottom: 22px;
     margin-right: 25px;
     float: left;
 }
@@ -25,6 +25,7 @@
 .dashboard-header {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 70px;
     width: 100%;
     background: #519872;
@@ -33,7 +34,9 @@
 }
 
 .logout {
-    margin-left: 26%;      
+    margin-left: 250px; 
+    color: white;    
+     
 }
 
 .logout:hover {
@@ -46,9 +49,17 @@
     margin: 0 auto;
     background: linear-gradient(to bottom, #e2f3ea, #ffffff);
 }
+.wizard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
 
 .add-new-listing {
-    margin-top: 0;
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .cancel-btn {
@@ -59,6 +70,27 @@
     height: 25px;
     color: black;
     font-weight: 700;
+    float: right;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+.progress {
+    margin: 0 auto;
+    display: flex;
+    width: 60%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dots {
+    margin: 0 auto;
+    width: 10%;
+    justify-content: center;
+}
+
+.dots>img {
+    width: 30px;
 }
 
 .prop-name {
@@ -70,10 +102,24 @@
 }
 .property-name-input {
     width: 55%;
+    margin-bottom: 25px;
 }
 
 .property-desc-input {
     width: 55%;
     height: 75px;
+    border: 1px solid black;
 }
+
+.wiz1-btn {
+    margin-top: 50px;
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 2px;
+    background: #3B5249;
+    color: white;
+    font-weight: 500; 
+}
+
 
