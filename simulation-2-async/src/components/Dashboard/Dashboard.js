@@ -9,7 +9,7 @@ class Dashboard extends Component {
         super()
         this.state = {
             price: 0,
-            listings: [] 
+            listings: []
         }
 
         this.handleChangePrice = this.handleChangePrice.bind(this);
@@ -17,8 +17,8 @@ class Dashboard extends Component {
         this.handleFilter = this.handleFilter.bind(this);
     }
 
-    handleFilter(){
-        
+    handleFilter() {
+
     }
 
     handleChangePrice(e) {
@@ -27,7 +27,7 @@ class Dashboard extends Component {
         })
     }
 
-    handleReset(){
+    handleReset() {
         this.setState({
             price: 0
         })
@@ -44,16 +44,28 @@ class Dashboard extends Component {
                     <Link to="/"><div className="logout"><h5>Logout</h5></div></Link>
                 </div>
                 <div className="dashboard-body">
-                  <Link to="/wizard/1"><button className="add-btn">Add new property</button></Link>
+                    <Link to="/wizard/1"><button className="add-btn">Add new property</button></Link>
                     <div className="desired-container" >
-                    <h4 className="desired-rent">List properties with "desired rent" greater than: $</h4>
-                    <input className="number-input" type="text" placeholder="0" onChange={this.handleChangePrice} value={this.state.price} />
-                    <button className="filter-btn" >Filter</button>
-                    <button className="reset-btn" onClick={this.handleReset}>Reset</button>
-                    </div>                   
+                        <h4 className="desired-rent">List properties with "desired rent" greater than: $</h4>
+                        <input className="number-input" type="text" placeholder="0" onChange={this.handleChangePrice} value={this.state.price} />
+                        <button className="filter-btn" >Filter</button>
+                        <button className="reset-btn" onClick={this.handleReset}>Reset</button>
+                    </div>
                     <hr />
                     <h3 className="home-listings" >Home Listings</h3>
-                    <div className="list"></div>
+                    <div className="list-container">
+                        <div className='list'>
+                            <div className='list-image'>IMG</div>
+                            <div className='list-name'> 
+                            <div className='name-container'>Name</div>
+                            </div>
+                            <div className='line-container'>
+                                <div className='line'>
+                                </div>
+                            </div>
+                            <div className='list-info'>Home-info</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
