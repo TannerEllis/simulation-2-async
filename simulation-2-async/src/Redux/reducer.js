@@ -1,4 +1,4 @@
-initailState = {
+const initialState = {
     propertyName: '',
     propertyDesc: '',
     address: '',
@@ -22,40 +22,39 @@ const LOAN_AMOUNT = 'LOAN_AMOUNT'
 const MONTHLY_MORTGAGE = 'MONTHLY_MORTGAGE'
 const DESIRED_RENT = 'DESIRED_RENT'
 
-export default function reducer(state = initailState, action) {
-    const { type, payload } = action
+export default function reducer(state = initialState, action) {
 
-    switch (type) {
+    switch (action.type) {
 
         case UPDDATE_PROPERTY_NAME:
-            return Object.assign({}, state, { properyName: payload })
+            return Object.assign({}, state, { propertyName: action.payload })
 
         case UPDTATE_PROPERTY_DESCRIPTION:
-            return Object.assign({}, state, { propertyDesc: payload })
+            return Object.assign({}, state, { propertyDesc: action.payload })
 
         case UPDATE_ADDRESS:
-            return Object.assign({}, state, { address: payload })
+            return Object.assign({}, state, { address: action.payload })
 
         case UPDATE_CITY:
-            return Object.assign({}, state, { city: payload })
+            return Object.assign({}, state, { city: action.payload })
 
         case LOCATION_STATE:
-            return Object.assign({}, state, { locationState: payload })
+            return Object.assign({}, state, { locationState: action.payload })
 
         case UPDATE_ZIP:
-            return Object.assign({}, state, { zip: payload })
+            return Object.assign({}, state, { zip: action.payload })
 
         case IMAGE:
-            return Object.assign({}, state, { image: payload })
+            return Object.assign({}, state, { image: action.payload })
 
         case LOAN_AMOUNT:
-            return Object.assign({}, state, { loanAmount: payload })
+            return Object.assign({}, state, { loanAmount: action.payload })
 
         case MONTHLY_MORTGAGE:
-            return Object.assign({}, state, { monthlyMortgage: payload })
+            return Object.assign({}, state, { monthlyMortgage: action.payload })
 
         case DESIRED_RENT:
-            return Object.assign({}, state, { desiredRent: payload })
+            return Object.assign({}, state, { desiredRent: action.payload })
 
             default: return state;
     }
@@ -89,6 +88,13 @@ export function updateCity(city){
     }
 }
 
+export function updateLocationState(locationState) {
+    return {
+        type: LOCATION_STATE,
+        payload: locationState
+    }
+}
+
 export function updateZip(zip) {
     return {
         type: UPDATE_ZIP,
@@ -114,5 +120,12 @@ export function updateMonthlyMortgage(monthlyMortgage) {
     return {
         type: MONTHLY_MORTGAGE,
         payload: monthlyMortgage
+    }
+}
+
+export function updateDesiredRent(desiredRent) {
+    return {
+        type: DESIRED_RENT,
+        payload: desiredRent
     }
 }

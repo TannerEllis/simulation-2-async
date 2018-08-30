@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Wizard4.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
+import { updateLoanAmount, updateMonthlyMortgage } from '../../Redux/reducer';
 
 
 
@@ -9,21 +11,21 @@ class Wizard4 extends Component {
     constructor() {
         super()
         this.state = {
-            propertyName: '',
-            propertyDescription: ''
+            loanAmount: '',
+            monthlyMortgage: ''
         }
 
+        this.handleLoanAmount = this.handleLoanAmount.bind(this);
+        this.handleMonthlyMortgage = this.handleMonthlyMortgage.bind(this);
+
     }
 
-    handlePropertyName(e) {
-        this.setState({
-            propertyName: e.target.value
-        })
+    handleLoanAmount(e) {
+        this.props.updateLoanAmount(e.target.value)
     }
-    handlePropertyDescription(e) {
-        this.setState({
-            propertyDescription: e.target.value
-        })
+
+    handleMonthlyMortgage(e) {
+        this.props.updateMonthlyMortgage(e.target.value)
     }
 
     render() {
@@ -59,9 +61,9 @@ class Wizard4 extends Component {
                         </div>
                     </div>
                     <h5>Loan Amount</h5>
-                    <input className="loan-amount" type="text" />
+                    <input onChange={this.handleLoanAmount} value={this.props.loanAmount} className="loan-amount" type="text" />
                     <h5>Monthly Mortgage</h5>
-                    <input className="monthly-mortgage" type="text" />
+                    <input onChange={this.handleMonthlyMortgage} value={this.props.monthlyMortgage} className="monthly-mortgage" type="text" />
 
 
                     <div className="btn-footer">
@@ -74,4 +76,11 @@ class Wizard4 extends Component {
     }
 }
 
-export default Wizard4;
+function mapStateToProps(reduxState) {
+    return {
+        loanAmount: reduxState.loanAmount,
+        monthlyMortgage: reduxState.monthlyMortgage
+    }
+}
+
+export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage}) (Wizard4);

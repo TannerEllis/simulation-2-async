@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Wizard1.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
+
+import { updatePropertyName, updatePropertyDescription } from '../../Redux/reducer';
 
 
 
@@ -13,18 +16,19 @@ class Wizard1 extends Component {
             propertyDescription: ''
         }
 
+        this.handlePropertyName = this.handlePropertyName.bind(this);
+        this.handlePropertyDescription = this.handlePropertyDescription.bind(this);
+
     }
 
     handlePropertyName(e) {
-        this.setState({
-            propertyName: e.target.value
-        })
+        this.props.updatePropertyName(e.target.value)
     }
+
     handlePropertyDescription(e) {
-        this.setState({
-            propertyDescription: e.target.value
-        })
+        this.props.updatePropertyDescription(e.target.value)
     }
+
 
     render() {
 
@@ -59,9 +63,9 @@ class Wizard1 extends Component {
                         </div>
                     </div>
                     <h5 className="prop-name">Property Name</h5>
-                    <input className="property-name-input" type="text" />
+                    <input onChange={this.handlePropertyName} value={this.props.name} className="property-name-input" type="text" />
                     <h5 className="prop-desc">Property Description</h5>
-                    <textarea className="property-desc-input" cols="30" rows="10"></textarea>
+                    <textarea onChange={this.handlePropertyDescription} value={this.props.description} className="property-desc-input" cols="30" rows="10"></textarea>
                     <div className="wiz1-next" >
                         <Link to="/wizard/2"><button className="wiz1-btn" >Next Step</button></Link>
                     </div>
@@ -71,4 +75,10 @@ class Wizard1 extends Component {
     }
 }
 
-export default Wizard1;
+function mapStateToProps(reduxState) {
+    return {
+        name: reduxState.propertyName,
+        description: reduxState.propertyDesc
+    }
+}
+export default connect(mapStateToProps, { updatePropertyName, updatePropertyDescription })(Wizard1);

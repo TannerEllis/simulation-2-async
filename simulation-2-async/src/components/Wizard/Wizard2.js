@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Wizard2.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
+import { updateAddress, updateCity, updateLocationState, updateZip } from '../../Redux/reducer';
 
 
 
@@ -11,22 +13,33 @@ class Wizard2 extends Component {
         this.state = {
             address: '',
             city: '',
-            state: '',
+            locationState: '',
             zip: ''
         }
 
+        this.handleAddress = this.handleAddress.bind(this)
+        this.handleCity = this.handleCity.bind(this)
+        this.handleLocationState = this.handleLocationState.bind(this)
+        this.handleZip = this.handleZip.bind(this)
+
     }
 
-    handlePropertyName(e) {
-        this.setState({
-            propertyName: e.target.value
-        })
+    handleAddress(e) {
+        this.props.updateAddress(e.target.value)
     }
-    handlePropertyDescription(e) {
-        this.setState({
-            propertyDescription: e.target.value
-        })
+    
+    handleCity(e) {
+        this.props.updateCity(e.target.value)
     }
+    
+    handleLocationState(e) {
+        this.props.updateLocationState(e.target.value)
+    }
+    
+    handleZip(e) {
+        this.props.updateZip(e.target.value)
+    }
+    
 
     render() {
 
@@ -61,7 +74,7 @@ class Wizard2 extends Component {
                         </div>
                     </div>
                     <h5>Address</h5>
-                    <input className="input-address" type="text" />
+                    <input onChange={this.handleAddress} value={this.props.address} className="input-address" type="text" />
                     <div className='city-container'>
                     <div className='city-title'>
                         <h5 className="city">City</h5>
@@ -70,14 +83,14 @@ class Wizard2 extends Component {
                         <h5 className="state">State</h5>
                         </div>
                     <div className="city-state">
-                        <input className="input-city" type="text" />
-                        <input className="input-state" type="text" />
+                        <input onChange={this.handleCity} value={this.props.city} className="input-city" type="text" />
+                        <input onChange={this.handleLocationState} value={this.props.locationState} className="input-state" type="text" />
                         </div>
                     </div>
                     <div className='zip-title'>
                     <h5>Zip</h5>
                     </div>
-                    <input className="input-zip" type="text" />
+                    <input onChange={this.handleZip} value={this.props.zip} className="input-zip" type="text" />
                     <div className="btn-footer">
                         <button onClick={this.props.history.goBack} className="prev-step" >Previous Step</button>
                         <Link to="/wizard/3"><button className="next-step" >Next Step</button></Link>
@@ -88,5 +101,13 @@ class Wizard2 extends Component {
         )
     }
 }
+function mapStateToProps(reduxState) {
+    return {
+        address: reduxState.address,
+        city: reduxState.city,
+        locationState: reduxState.locationState,
+        zip: reduxState.zip
+    }
+}
 
-export default Wizard2;
+export default connect(mapStateToProps, {updateAddress, updateCity, updateLocationState, updateZip}) (Wizard2);

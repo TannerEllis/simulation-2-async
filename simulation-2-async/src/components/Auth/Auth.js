@@ -32,13 +32,21 @@ class Auth extends Component {
 
     handleLogin(){
         axios.post('/api/auth/login', {username: this.state.username, password: this.state.password}).then((res)=> {
-            this.props.history.push('/dashboard')
+            this.setState({
+                username: res.data,
+                password: res.data
+            })           
+         this.props.history.push('/dashboard')
             console.log('Login Successful')
         }) 
     }
 
     handleRegister(){
         axios.post('/api/auth/register', {username: this.state.username, password: this.state.password}).then((res)=>{
+            this.setState({
+                username: res.data,
+                password: res.data
+            })           
             this.props.history.push('/dashboard')
             console.log('Registration Successful')
         })

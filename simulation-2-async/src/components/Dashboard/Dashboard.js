@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-import './Dashboard.css'
+import axios from 'axios';
+import './Dashboard.css';
 import HeaderLogo from '../Dashboard/header_logo.png';
 
 class Dashboard extends Component {
@@ -14,12 +14,22 @@ class Dashboard extends Component {
 
         this.handleChangePrice = this.handleChangePrice.bind(this);
         this.handleReset = this.handleReset.bind(this);
-        this.handleFilter = this.handleFilter.bind(this);
+        // this.displayHomeList = this.displayHomeList.bind(this);
+        // this.handleFilter = this.handleFilter.bind(this);
     }
 
-    handleFilter() {
+    // componentDidMount(){
+    //     this.displayHomeList()
+    // }
 
-    }
+    // displayHomeList() {
+    //     axios.get('/api/properties').then((res) => {
+    //         this.setState({
+    //             listings: res.data
+    //         })
+    //     }).catch(err => console.log(err))
+    // }
+
 
     handleChangePrice(e) {
         this.setState({
@@ -34,6 +44,36 @@ class Dashboard extends Component {
     }
 
     render() {
+        let homeListings = this.state.listings.map((houses, index) => {
+            return (
+                <div key={index} className="list-container">
+                    <div className='list'>
+                        <div className='list-image'>
+                            <img src={houses.image} alt="" />
+                        </div>
+                        <div className='list-name'>
+                            <div className='name-container'>Name
+                </div>
+                            {houses.property_name}
+                            {houses.property_description}
+                        </div>
+                        <div className='line-container'>
+                            <div className='line'>
+                            </div>
+                        </div>
+                        <div className='list-info'>
+                            {houses.loanAmount}
+                            {houses.monthlyMortgage}
+                            {houses.desiredRent}
+                            {houses.address}
+                            {houses.city}
+                            {houses.state}
+                            {houses.zip}
+                        </div>
+                    </div>
+                </div>
+            )
+        })
 
         return (
             <div className="dashboard" >
@@ -53,19 +93,7 @@ class Dashboard extends Component {
                     </div>
                     <hr />
                     <h3 className="home-listings" >Home Listings</h3>
-                    <div className="list-container">
-                        <div className='list'>
-                            <div className='list-image'>IMG</div>
-                            <div className='list-name'> 
-                            <div className='name-container'>Name</div>
-                            </div>
-                            <div className='line-container'>
-                                <div className='line'>
-                                </div>
-                            </div>
-                            <div className='list-info'>Home-info</div>
-                        </div>
-                    </div>
+                    {homeListings}
                 </div>
             </div>
         )
@@ -74,3 +102,16 @@ class Dashboard extends Component {
 
 
 export default Dashboard;
+{/* <div className="list-container">
+    <div className='list'>
+        <div className='list-image'>IMG</div>
+        <div className='list-name'> 
+        <div className='name-container'>Name</div>
+        </div>
+        <div className='line-container'>
+            <div className='line'>
+            </div>
+        </div>
+        <div className='list-info'>Home-info</div>
+    </div>
+</div> */}

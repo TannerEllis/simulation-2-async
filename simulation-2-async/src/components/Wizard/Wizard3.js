@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Wizard3.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
+import { updateImage } from '../../Redux/reducer';
 
 
 
@@ -9,23 +11,17 @@ class Wizard3 extends Component {
     constructor() {
         super()
         this.state = {
-            propertyName: '',
-            propertyDescription: '',
             image: ''
         }
 
+        this.handleImage = this.handleImage.bind(this)
+
     }
 
-    handlePropertyName(e) {
-        this.setState({
-            propertyName: e.target.value
-        })
+    handleImage(e){
+        this.props.updateImage(e.target.value)
     }
-    handlePropertyDescription(e) {
-        this.setState({
-            propertyDescription: e.target.value
-        })
-    }
+
 
     render() {
 
@@ -61,7 +57,7 @@ class Wizard3 extends Component {
                     </div>
                     <img className="image-preview" placeholder="preview" src={this.state.image} alt="" />
                     <h5>Image URL</h5>
-                    <input className="image-url" type="text" />
+                    <input onChange={this.handleImage} value={this.props.image} className="image-url" type="text" />
                     <div className="btn-footer">
                         <button onClick={this.props.history.goBack} className="prev-step" >Previous Step</button>
                         <Link to="/wizard/4"><button className="next-step" >Next Step</button></Link>
@@ -71,5 +67,10 @@ class Wizard3 extends Component {
         )
     }
 }
+function mapStateToProps(reduxState) {
+    return {
+        image: reduxState.image
+    }
+}
 
-export default Wizard3;
+export default connect(mapStateToProps, {updateImage}) (Wizard3);
