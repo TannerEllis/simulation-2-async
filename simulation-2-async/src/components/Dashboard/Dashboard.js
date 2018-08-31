@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import './Dashboard.css';
 import HeaderLogo from '../Dashboard/header_logo.png';
 
@@ -14,21 +14,21 @@ class Dashboard extends Component {
 
         this.handleChangePrice = this.handleChangePrice.bind(this);
         this.handleReset = this.handleReset.bind(this);
-        // this.displayHomeList = this.displayHomeList.bind(this);
+        this.displayHomeList = this.displayHomeList.bind(this);
         // this.handleFilter = this.handleFilter.bind(this);
     }
 
-    // componentDidMount(){
-    //     this.displayHomeList()
-    // }
+    componentDidMount() {
+        this.displayHomeList()
+    }
 
-    // displayHomeList() {
-    //     axios.get('/api/properties').then((res) => {
-    //         this.setState({
-    //             listings: res.data
-    //         })
-    //     }).catch(err => console.log(err))
-    // }
+    displayHomeList() {
+        axios.get('/api/properties').then((res) => {
+            this.setState({
+                listings: res.data
+            })
+        })
+    }
 
 
     handleChangePrice(e) {
@@ -44,34 +44,36 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log(this.state.listings)
         let homeListings = this.state.listings.map((houses, index) => {
             return (
-                <div key={index} className="list-container">
-                    <div className='list'>
+                <div key={index} className="list">
                         <div className='list-image'>
                             <img src={houses.image} alt="" />
                         </div>
                         <div className='list-name'>
-                            <div className='name-container'>Name
-                </div>
+                            <div className='name-container'>
                             {houses.property_name}
-                            {houses.property_description}
                         </div>
+                            <div className='home-desc'>
+                            <p>{houses.property_description}</p>
+                            </div>
+                </div>
+                                                     
                         <div className='line-container'>
                             <div className='line'>
                             </div>
                         </div>
-                        <div className='list-info'>
-                            {houses.loanAmount}
-                            {houses.monthlyMortgage}
-                            {houses.desiredRent}
-                            {houses.address}
-                            {houses.city}
-                            {houses.state}
-                            {houses.zip}
+                        <div className='list-info'>  
+                                <li>Loan: {houses.loan_amount}</li>
+                                <li>Monthly Mortgage: {houses.monthly_mortgage}</li>
+                                <li>Desired Rent: {houses.desired_rent}</li>
+                                <li>Address: {houses.address}</li>
+                                <li>City: {houses.city}</li>
+                                <li>State: {houses.us_state}</li>
+                                <li>Zip: {houses.zip}</li>
                         </div>
                     </div>
-                </div>
             )
         })
 
@@ -93,7 +95,9 @@ class Dashboard extends Component {
                     </div>
                     <hr />
                     <h3 className="home-listings" >Home Listings</h3>
+                    <div className='list-container'>
                     {homeListings}
+                    </div>
                 </div>
             </div>
         )
@@ -102,16 +106,3 @@ class Dashboard extends Component {
 
 
 export default Dashboard;
-{/* <div className="list-container">
-    <div className='list'>
-        <div className='list-image'>IMG</div>
-        <div className='list-name'> 
-        <div className='name-container'>Name</div>
-        </div>
-        <div className='line-container'>
-            <div className='line'>
-            </div>
-        </div>
-        <div className='list-info'>Home-info</div>
-    </div>
-</div> */}

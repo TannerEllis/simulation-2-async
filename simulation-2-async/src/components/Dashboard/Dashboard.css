@@ -130,7 +130,7 @@ h4 {
     width: 95%;
     height: 125px;
     margin: 0 auto;
-    
+    margin-bottom: 15px;
 }
 
 .list-image {
@@ -149,8 +149,16 @@ h4 {
 }
 
 .name-container {
+    display: flex;
+    flex-direction: column;
     height: 20px;
     margin-left: 10px;
+}
+.home-desc {
+    border: 1px solid red;
+    height: 80%;
+    width: 95%;
+    text-align: left;
 }
 
 .line-container {
@@ -171,5 +179,13 @@ h4 {
     background: rgb(222, 222, 222);
     height: 100%;
     width: 39%;
-    
+    font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+li {
+    list-style-type: none;
 }

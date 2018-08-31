@@ -4,7 +4,7 @@ module.exports = {
 
         req.app.get('db').login_user([username, password])
             .then((user) => {
-                console.log(user[0])
+                console.log(1111, user[0])
                 req.session.userId = user[0].id
                 console.log(req.session);
                 res.sendStatus(200);
@@ -16,10 +16,10 @@ module.exports = {
         
         req.app.get('db').create_user([username, password])
                 .then((user) => { 
+                    console.log(2222, user)
                     req.session.userId = user[0].id
                     res.sendStatus(200)})
             .catch((err) => {
-                console.log(err)
                 res.status(500).send(err)
             })
     },
@@ -46,4 +46,10 @@ module.exports = {
             res.status(500).send(err)
         }))
     },
+
+    getProperties: (req, res) => {
+        req.app.get('db').get_properties([req.session.userId])
+        .then(( propertyList ) => res.send( propertyList ))
+      
+    }
 }
