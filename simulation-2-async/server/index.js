@@ -28,7 +28,7 @@ app.post('/api/auth/login', controller.login)
 app.post('/api/auth/register', controller.register)
 // app.post('/api/auth/logout', controller.logout)
 app.post('/api/properties', controller.createProperties)
-app.get('/api/properties', controller.getProperties)
+// app.get('/api/properties', controller.getProperties)
 // app.delete('/api/properties/:id', controller.deleteProperties)
 
 

@@ -1,3 +1,3 @@
 select * 
 from  properties 
-where seller_id = $1
+where users_id = $1

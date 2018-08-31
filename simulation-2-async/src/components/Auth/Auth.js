@@ -42,7 +42,8 @@ class Auth extends Component {
     }
 
     handleRegister(){
-        axios.post('/api/auth/register', {username: this.state.username, password: this.state.password}).then((res)=>{
+        let {username, password} = this.state
+        axios.post('/api/auth/register', {username, password}).then((res)=>{
             this.setState({
                 username: res.data,
                 password: res.data
