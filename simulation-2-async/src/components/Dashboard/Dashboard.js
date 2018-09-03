@@ -15,6 +15,7 @@ class Dashboard extends Component {
         this.handleChangePrice = this.handleChangePrice.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.displayHomeList = this.displayHomeList.bind(this);
+        this.handleDeleteListing = this.handleDeleteListing.bind(this);
         // this.handleFilter = this.handleFilter.bind(this);
     }
 
@@ -24,6 +25,16 @@ class Dashboard extends Component {
 
     displayHomeList() {
         axios.get('/api/properties').then((res) => {
+            this.setState({
+                listings: res.data
+            })
+        })
+    }
+
+    handleDeleteListing(id) {
+        console.log(id)
+        axios.delete(`/api/properties/${id}`)
+        .then((res) => {
             this.setState({
                 listings: res.data
             })
@@ -73,6 +84,7 @@ class Dashboard extends Component {
                                 <li>State: {houses.us_state}</li>
                                 <li>Zip: {houses.zip}</li>
                         </div>
+                        <div className='x'onClick={()=> this.handleDeleteListing(houses.property_id)}><i className="fas fa-times"></i></div>
                     </div>
             )
         })

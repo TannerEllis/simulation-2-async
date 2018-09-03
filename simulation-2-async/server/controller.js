@@ -51,5 +51,13 @@ module.exports = {
         req.app.get('db').get_properties([req.session.userId])
         .then(( propertyList ) => res.send( propertyList ))
       
+    },
+
+    deleteProperties: (req, res) => {
+        let {id} = req.params
+        console.log(id)
+
+        req.app.get('db').delete_property([id, req.session.userId ])
+        .then((property)=> res.send(property))
     }
 }

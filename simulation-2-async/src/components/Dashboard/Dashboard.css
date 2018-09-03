@@ -142,20 +142,26 @@ h4 {
 
 .list-name {
     display: flex;
+    flex-direction: column;
     background: rgb(222, 222, 222);
     font-weight: bold;
     height: 100%;
     width: 39%;
 }
+ 
+p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+}
 
 .name-container {
-    display: flex;
-    flex-direction: column;
     height: 20px;
     margin-left: 10px;
 }
+
 .home-desc {
-    border: 1px solid red;
+    margin: 0 auto;
     height: 80%;
     width: 95%;
     text-align: left;
@@ -189,3 +195,15 @@ h4 {
 li {
     list-style-type: none;
 }
+
+.x {
+    background: rgb(222, 222, 222);
+    width: 20px;
+    color: black;
+}
+
+.x:hover {
+    cursor: pointer;
+}
+
+

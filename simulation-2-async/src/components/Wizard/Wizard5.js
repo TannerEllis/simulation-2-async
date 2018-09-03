@@ -25,6 +25,10 @@ class Wizard5 extends Component {
         this.addHomeListing = this.addHomeListing.bind(this);
     }
 
+    handleInputReset(){
+        
+    }
+
     handleDesiredRent(e) {
         this.props.updateDesiredRent(e.target.value)
     }
@@ -33,7 +37,8 @@ class Wizard5 extends Component {
         let { name, description, address, city, locationState, zip, image, loanAmount, monthlyMortgage, desiredRent } = this.props
       
         axios.post('/api/properties', { name, description, address, city, locationState, zip, image, loanAmount, monthlyMortgage, desiredRent })
-        .then((res) => console.log(res))
+        .then((res) => this.props.history.push('/dashboard'))
+       
     }
 
     render() {
@@ -73,7 +78,7 @@ class Wizard5 extends Component {
 
                     <div className="btn-footer">
                         <button onClick={this.props.history.goBack} className="prev-step" >Previous Step</button>
-                        <Link to='/dashboard'><button onClick={this.addHomeListing} className="complete" >Complete</button></Link>
+                       <button onClick={this.addHomeListing} className="complete" >Complete</button>
                     </div>
                 </div>
             </div>

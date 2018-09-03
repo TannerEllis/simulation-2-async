@@ -12,7 +12,7 @@ app.use(sessions({
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 600000
+      maxAge: 60000000
     }
   }));
 
@@ -29,7 +29,7 @@ app.post('/api/auth/register', controller.register)
 // app.post('/api/auth/logout', controller.logout)
 app.post('/api/properties', controller.createProperties)
 app.get('/api/properties', controller.getProperties)
-// app.delete('/api/properties/:id', controller.deleteProperties)
+app.delete('/api/properties/:id', controller.deleteProperties)
 
 
 
