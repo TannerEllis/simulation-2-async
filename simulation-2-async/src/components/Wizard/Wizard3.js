@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Wizard3.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
-import { updateImage } from '../../Redux/reducer';
+import { updateImage, resetInput } from '../../Redux/reducer';
 
 
 
@@ -15,11 +15,16 @@ class Wizard3 extends Component {
         }
 
         this.handleImage = this.handleImage.bind(this)
+        this.handleCancel = this.handleCancel.bind(this);
 
     }
 
     handleImage(e){
         this.props.updateImage(e.target.value)
+    }
+
+    handleCancel(){
+        this.props.resetInput()
     }
 
 
@@ -36,7 +41,7 @@ class Wizard3 extends Component {
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h2 className="add-new-listing">Add new listing</h2>
-                        <Link to="/dashboard"><button className="cancel-btn">Cancel</button></Link>
+                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>
@@ -73,4 +78,4 @@ function mapStateToProps(reduxState) {
     }
 }
 
-export default connect(mapStateToProps, {updateImage}) (Wizard3);
+export default connect(mapStateToProps, {updateImage, resetInput}) (Wizard3);

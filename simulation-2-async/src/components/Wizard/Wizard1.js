@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './Wizard1.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
 
-import { updatePropertyName, updatePropertyDescription } from '../../Redux/reducer';
+import { updatePropertyName, updatePropertyDescription, resetInput } from '../../Redux/reducer';
 
 
 
@@ -18,6 +18,7 @@ class Wizard1 extends Component {
 
         this.handlePropertyName = this.handlePropertyName.bind(this);
         this.handlePropertyDescription = this.handlePropertyDescription.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
 
     }
 
@@ -27,6 +28,10 @@ class Wizard1 extends Component {
 
     handlePropertyDescription(e) {
         this.props.updatePropertyDescription(e.target.value)
+    }
+
+    handleCancel(){
+        this.props.resetInput()
     }
 
 
@@ -43,7 +48,7 @@ class Wizard1 extends Component {
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h3 className="add-new-listing">Add new listing</h3>
-                        <Link to="/dashboard"><button className="cancel-btn">Cancel</button></Link>
+                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>
@@ -81,4 +86,4 @@ function mapStateToProps(reduxState) {
         description: reduxState.propertyDesc
     }
 }
-export default connect(mapStateToProps, { updatePropertyName, updatePropertyDescription })(Wizard1);
+export default connect(mapStateToProps, { updatePropertyName, updatePropertyDescription, resetInput })(Wizard1);

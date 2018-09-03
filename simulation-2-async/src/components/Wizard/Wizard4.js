@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Wizard4.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
-import { updateLoanAmount, updateMonthlyMortgage } from '../../Redux/reducer';
+import { updateLoanAmount, updateMonthlyMortgage, resetInput } from '../../Redux/reducer';
 
 
 
@@ -17,6 +17,7 @@ class Wizard4 extends Component {
 
         this.handleLoanAmount = this.handleLoanAmount.bind(this);
         this.handleMonthlyMortgage = this.handleMonthlyMortgage.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
 
     }
 
@@ -26,6 +27,10 @@ class Wizard4 extends Component {
 
     handleMonthlyMortgage(e) {
         this.props.updateMonthlyMortgage(e.target.value)
+    }
+
+    handleCancel(){
+        this.props.resetInput()
     }
 
     render() {
@@ -41,7 +46,7 @@ class Wizard4 extends Component {
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h2 className="add-new-listing">Add new listing</h2>
-                        <Link to="/dashboard"><button className="cancel-btn">Cancel</button></Link>
+                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>
@@ -83,4 +88,4 @@ function mapStateToProps(reduxState) {
     }
 }
 
-export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage}) (Wizard4);
+export default connect(mapStateToProps, {updateLoanAmount, updateMonthlyMortgage, resetInput}) (Wizard4);

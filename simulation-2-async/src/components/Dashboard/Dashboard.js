@@ -42,6 +42,7 @@ class Dashboard extends Component {
     }
 
 
+
     handleChangePrice(e) {
         this.setState({
             price: e.target.value

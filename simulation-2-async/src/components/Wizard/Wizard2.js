@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Wizard2.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
-import { updateAddress, updateCity, updateLocationState, updateZip } from '../../Redux/reducer';
+import { updateAddress, updateCity, updateLocationState, updateZip, resetInput } from '../../Redux/reducer';
 
 
 
@@ -21,6 +21,7 @@ class Wizard2 extends Component {
         this.handleCity = this.handleCity.bind(this)
         this.handleLocationState = this.handleLocationState.bind(this)
         this.handleZip = this.handleZip.bind(this)
+        this.handleCancel = this.handleCancel.bind(this);
 
     }
 
@@ -40,6 +41,9 @@ class Wizard2 extends Component {
         this.props.updateZip(e.target.value)
     }
     
+    handleCancel(){
+        this.props.resetInput()
+    }
 
     render() {
 
@@ -54,7 +58,7 @@ class Wizard2 extends Component {
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h2 className="add-new-listing">Add new listing</h2>
-                        <Link to="/dashboard"><button className="cancel-btn">Cancel</button></Link>
+                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>
@@ -110,4 +114,4 @@ function mapStateToProps(reduxState) {
     }
 }
 
-export default connect(mapStateToProps, {updateAddress, updateCity, updateLocationState, updateZip}) (Wizard2);
+export default connect(mapStateToProps, {updateAddress, updateCity, updateLocationState, updateZip, resetInput}) (Wizard2);

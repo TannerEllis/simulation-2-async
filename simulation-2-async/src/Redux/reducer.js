@@ -21,6 +21,7 @@ const IMAGE = 'IMAGE'
 const LOAN_AMOUNT = 'LOAN_AMOUNT'
 const MONTHLY_MORTGAGE = 'MONTHLY_MORTGAGE'
 const DESIRED_RENT = 'DESIRED_RENT'
+const RESET_INPUT = 'RESET_INPUT'
 
 export default function reducer(state = initialState, action) {
 
@@ -56,6 +57,9 @@ export default function reducer(state = initialState, action) {
         case DESIRED_RENT:
             return Object.assign({}, state, { desiredRent: action.payload })
 
+        case RESET_INPUT:
+            return initialState
+
             default: return state;
     }
 }
@@ -81,7 +85,7 @@ export function updateAddress(address) {
     }
 }
 
-export function updateCity(city){
+export function updateCity(city) {
     return {
         type: UPDATE_CITY,
         payload: city
@@ -127,5 +131,11 @@ export function updateDesiredRent(desiredRent) {
     return {
         type: DESIRED_RENT,
         payload: desiredRent
+    }
+}
+
+export function resetInput() {
+    return {
+        type: RESET_INPUT
     }
 }

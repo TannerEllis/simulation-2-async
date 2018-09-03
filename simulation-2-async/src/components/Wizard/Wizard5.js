@@ -9,7 +9,8 @@ import {
     updateAddress, updateCity,
     updateLocationState, updateZip,
     updateImage, updateLoanAmount,
-    updateMonthlyMortgage, updateDesiredRent
+    updateMonthlyMortgage, updateDesiredRent,
+    resetInput
 } from '../../Redux/reducer';
 
 
@@ -23,22 +24,26 @@ class Wizard5 extends Component {
 
         this.handleDesiredRent = this.handleDesiredRent.bind(this);
         this.addHomeListing = this.addHomeListing.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
-    handleInputReset(){
-        
-    }
 
     handleDesiredRent(e) {
         this.props.updateDesiredRent(e.target.value)
+    }
+
+    handleCancel(){
+        this.props.resetInput()
     }
 
     addHomeListing() {
         let { name, description, address, city, locationState, zip, image, loanAmount, monthlyMortgage, desiredRent } = this.props
       
         axios.post('/api/properties', { name, description, address, city, locationState, zip, image, loanAmount, monthlyMortgage, desiredRent })
-        .then((res) => this.props.history.push('/dashboard'))
-       
+        .then((res) => {
+            this.props.resetInput()
+             this.props.history.push('/dashboard')})
+        
     }
 
     render() {
@@ -54,7 +59,7 @@ class Wizard5 extends Component {
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h2 className="add-new-listing">Add new listing</h2>
-                        <Link to="/dashboard"><button className="cancel-btn">Cancel</button></Link>
+                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>
@@ -106,4 +111,4 @@ export default connect(mapStateToProps, {
     updateAddress, updateCity,
     updateLocationState, updateZip,
     updateImage, updateLoanAmount,
-    updateMonthlyMortgage, updateDesiredRent })(Wizard5);
+    updateMonthlyMortgage, updateDesiredRent, resetInput })(Wizard5);
