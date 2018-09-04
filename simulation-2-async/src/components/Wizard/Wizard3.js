@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import './Wizard3.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
 import { updateImage, resetInput } from '../../Redux/reducer';
@@ -16,6 +17,7 @@ class Wizard3 extends Component {
 
         this.handleImage = this.handleImage.bind(this)
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
 
     }
 
@@ -27,6 +29,13 @@ class Wizard3 extends Component {
         this.props.resetInput()
     }
 
+    handleLogout(){
+        axios.post('/api/auth/logout')
+        .then( res => {
+            console.log('logged out')
+        })
+    }
+
 
     render() {
 
@@ -36,7 +45,7 @@ class Wizard3 extends Component {
                     <img className="header-logo" src={HeaderLogo} alt="" />
                     <h2 className="houser-sub">Houser </h2>
                     <h2 className="dashboard-sub"> Dashboard</h2>
-                    <Link to="/"><div className="logout"><h5>Logout</h5></div></Link>
+                    <Link to="/"  onClick={this.handleLogout}><div className="logout"><h5>Logout</h5></div></Link>
                 </div>
                 <div className="dashboard-body">
                     <div className="wizard-header" >

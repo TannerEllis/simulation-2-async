@@ -59,5 +59,10 @@ module.exports = {
 
         req.app.get('db').delete_property([id, req.session.userId ])
         .then((property)=> res.send(property))
+    }, 
+
+    logout: (req, res) => {
+        req.session.destroy();
+        res.sendStatus(200);
     }
 }

@@ -18,6 +18,7 @@ class Dashboard extends Component {
         this.displayHomeList = this.displayHomeList.bind(this);
         this.handleDeleteListing = this.handleDeleteListing.bind(this);
         this.handleFilter = this.handleFilter.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     componentDidMount() {
@@ -59,6 +60,13 @@ class Dashboard extends Component {
         this.setState({
             price: 0,
             input: 0
+        })
+    }
+
+    handleLogout(){
+        axios.post('/api/auth/logout')
+        .then( res => {
+            console.log('logged out')
         })
     }
 
@@ -105,7 +113,7 @@ class Dashboard extends Component {
                     <img className="header-logo" src={HeaderLogo} alt="" />
                     <h2 className="houser-sub">Houser </h2>
                     <h2 className="dashboard-sub"> Dashboard</h2>
-                    <Link to="/"><div className="logout"><h5>Logout</h5></div></Link>
+                    <Link to="/" onClick={this.handleLogout}><div className="logout"><h5>Logout</h5></div></Link>
                 </div>
                 <div className="dashboard-body">
                     <Link to="/wizard/1"><button className="add-btn">Add new property</button></Link>

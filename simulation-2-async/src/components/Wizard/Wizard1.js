@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import './Wizard1.css'
 import HeaderLogo from '../Dashboard/header_logo.png';
 
@@ -19,6 +20,7 @@ class Wizard1 extends Component {
         this.handlePropertyName = this.handlePropertyName.bind(this);
         this.handlePropertyDescription = this.handlePropertyDescription.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
 
     }
 
@@ -34,6 +36,14 @@ class Wizard1 extends Component {
         this.props.resetInput()
     }
 
+    handleLogout(){
+        axios.post('/api/auth/logout')
+        .then( res => {
+            console.log('logged out')
+        })
+    }
+
+
 
     render() {
 
@@ -43,12 +53,12 @@ class Wizard1 extends Component {
                     <img className="header-logo" src={HeaderLogo} alt="" />
                     <h2 className="houser-sub">Houser </h2>
                     <h2 className="dashboard-sub"> Dashboard</h2>
-                    <Link to="/"><div className="logout"><h5>Logout</h5></div></Link>
+                    <Link to="/" onClick={this.handleLogout}><div className="logout"><h5>Logout</h5></div></Link>
                 </div>
                 <div className="dashboard-body">
                     <div className="wizard-header" >
                         <h3 className="add-new-listing">Add new listing</h3>
-                        <Link to="/dashboard"><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
+                        <Link to="/dashboard" ><button className="cancel-btn" onClick={this.handleCancel}>Cancel</button></Link>
                     </div>
                     <div className='progress'>
                         <div className='dots'>

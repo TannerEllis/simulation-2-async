@@ -25,6 +25,7 @@ class Wizard5 extends Component {
         this.handleDesiredRent = this.handleDesiredRent.bind(this);
         this.addHomeListing = this.addHomeListing.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
 
@@ -45,6 +46,14 @@ class Wizard5 extends Component {
              this.props.history.push('/dashboard')})      
     }
 
+    handleLogout(){
+        axios.post('/api/auth/logout')
+        .then( res => {
+            console.log('logged out')
+        })
+    }
+
+
     render() {
 
         return (
@@ -53,7 +62,7 @@ class Wizard5 extends Component {
                     <img className="header-logo" src={HeaderLogo} alt="" />
                     <h2 className="houser-sub">Houser </h2>
                     <h2 className="dashboard-sub"> Dashboard</h2>
-                    <Link to="/"><div className="logout"><h5>Logout</h5></div></Link>
+                    <Link to="/"  onClick={this.handleLogout}><div className="logout"><h5>Logout</h5></div></Link>
                 </div>
                 <div className="dashboard-body">
                     <div className="wizard-header" >
