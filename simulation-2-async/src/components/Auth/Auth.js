@@ -50,7 +50,7 @@ class Auth extends Component {
             })           
             this.props.history.push('/dashboard')
             console.log('Registration Successful')
-        })
+        }).catch((err) => { console.log(err)})
     }
 
     render() {
