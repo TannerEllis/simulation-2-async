@@ -6,10 +6,10 @@ address varchar(50),
 city varchar(50),
 us_state varchar(50),
 zip int,
-image_url varchar(50),
-loan_amount money,
-monthly_mortgage money,
-desired_rent money,
+image_url text,
+loan_amount int,
+monthly_mortgage int,
+desired_rent int,
 users_id int references users(id)
 );
 

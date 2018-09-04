@@ -42,8 +42,7 @@ class Wizard5 extends Component {
         axios.post('/api/properties', { name, description, address, city, locationState, zip, image, loanAmount, monthlyMortgage, desiredRent })
         .then((res) => {
             this.props.resetInput()
-             this.props.history.push('/dashboard')})
-        
+             this.props.history.push('/dashboard')})      
     }
 
     render() {
@@ -79,7 +78,7 @@ class Wizard5 extends Component {
                         </div>
                     </div>
                     <h5>Desired Rent</h5>
-                    <input onChange={this.handleDesiredRent} value={this.props.desiredRent} className="desired-rent" type="text" />
+                    <input placeholder='$' onChange={this.handleDesiredRent} value={this.props.desiredRent} className="desired-rent" type="text" />
 
                     <div className="btn-footer">
                         <button onClick={this.props.history.goBack} className="prev-step" >Previous Step</button>

@@ -60,7 +60,7 @@ class Wizard3 extends Component {
                             <img src={require('../../assets/step_inactive.png')} alt='step-inactive' />
                         </div>
                     </div>
-                    <img className="image-preview" placeholder="preview" src={this.state.image} alt="" />
+                    <img className="image-preview" placeholder="preview" src={this.props.image} alt="" />
                     <h5>Image URL</h5>
                     <input onChange={this.handleImage} value={this.props.image} className="image-url" type="text" />
                     <div className="btn-footer">

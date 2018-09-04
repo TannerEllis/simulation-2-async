@@ -9,14 +9,15 @@ class Dashboard extends Component {
         super()
         this.state = {
             price: 0,
-            listings: []
+            listings: [],
+            input: ''
         }
 
         this.handleChangePrice = this.handleChangePrice.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.displayHomeList = this.displayHomeList.bind(this);
         this.handleDeleteListing = this.handleDeleteListing.bind(this);
-        // this.handleFilter = this.handleFilter.bind(this);
+        this.handleFilter = this.handleFilter.bind(this);
     }
 
     componentDidMount() {
@@ -40,12 +41,17 @@ class Dashboard extends Component {
             })
         })
     }
-
-
+ 
 
     handleChangePrice(e) {
         this.setState({
-            price: e.target.value
+            input: e.target.value
+        })
+    }
+
+    handleFilter(){
+        this.setState({
+            price: this.state.input
         })
     }
 
@@ -57,11 +63,13 @@ class Dashboard extends Component {
 
     render() {
         console.log(this.state.listings)
-        let homeListings = this.state.listings.map((houses, index) => {
+        let homeListings = this.state.listings.filter((list, index) => {
+            return list.desired_rent > this.state.price ? true : false
+        }).map((houses, index) => {
             return (
                 <div key={index} className="list">
                         <div className='list-image'>
-                            <img src={houses.image} alt="" />
+                            <img className='image-background' src={houses.image_url}  />
                         </div>
                         <div className='list-name'>
                             <div className='name-container'>
@@ -77,9 +85,9 @@ class Dashboard extends Component {
                             </div>
                         </div>
                         <div className='list-info'>  
-                                <li>Loan: {houses.loan_amount}</li>
-                                <li>Monthly Mortgage: {houses.monthly_mortgage}</li>
-                                <li>Desired Rent: {houses.desired_rent}</li>
+                                <li>Loan: ${houses.loan_amount}</li>
+                                <li>Monthly Mortgage: ${houses.monthly_mortgage}</li>
+                                <li>Desired Rent: ${houses.desired_rent}</li>
                                 <li>Address: {houses.address}</li>
                                 <li>City: {houses.city}</li>
                                 <li>State: {houses.us_state}</li>
@@ -102,8 +110,8 @@ class Dashboard extends Component {
                     <Link to="/wizard/1"><button className="add-btn">Add new property</button></Link>
                     <div className="desired-container" >
                         <h4 className="desired-rent">List properties with "desired rent" greater than: $</h4>
-                        <input className="number-input" type="text" placeholder="0" onChange={this.handleChangePrice} value={this.state.price} />
-                        <button className="filter-btn" >Filter</button>
+                        <input className="number-input" type="text" placeholder="0" onChange={this.handleChangePrice} value={this.state.input} />
+                        <button className="filter-btn" onClick={this.handleFilter} >Filter</button>
                         <button className="reset-btn" onClick={this.handleReset}>Reset</button>
                     </div>
                     <hr />

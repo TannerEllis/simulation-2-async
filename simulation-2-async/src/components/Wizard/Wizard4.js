@@ -66,9 +66,9 @@ class Wizard4 extends Component {
                         </div>
                     </div>
                     <h5>Loan Amount</h5>
-                    <input onChange={this.handleLoanAmount} value={this.props.loanAmount} className="loan-amount" type="text" />
+                    <input placeholder='$' onChange={this.handleLoanAmount} value={this.props.loanAmount} className="loan-amount" type="text" />
                     <h5>Monthly Mortgage</h5>
-                    <input onChange={this.handleMonthlyMortgage} value={this.props.monthlyMortgage} className="monthly-mortgage" type="text" />
+                    <input placeholder='$' onChange={this.handleMonthlyMortgage} value={this.props.monthlyMortgage} className="monthly-mortgage" type="text" />
 
 
                     <div className="btn-footer">
