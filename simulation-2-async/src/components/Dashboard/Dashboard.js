@@ -10,7 +10,7 @@ class Dashboard extends Component {
         this.state = {
             price: 0,
             listings: [],
-            input: ''
+            input: 0
         }
 
         this.handleChangePrice = this.handleChangePrice.bind(this);
@@ -57,7 +57,8 @@ class Dashboard extends Component {
 
     handleReset() {
         this.setState({
-            price: 0
+            price: 0,
+            input: 0
         })
     }
 
