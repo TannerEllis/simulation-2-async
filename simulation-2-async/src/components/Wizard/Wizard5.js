@@ -56,6 +56,8 @@ class Wizard5 extends Component {
 
     render() {
 
+        const sum = this.props.monthlyMortgage * 1.25
+
         return (
             <div className="wizard" >
                 <div className="dashboard-header">
@@ -86,6 +88,7 @@ class Wizard5 extends Component {
                             <img src={require('../../assets/step_active.png')} alt='step-active' />
                         </div>
                     </div>
+                    Recommended Rent ${sum}
                     <h5>Desired Rent</h5>
                     <input placeholder='$' onChange={this.handleDesiredRent} value={this.props.desiredRent} className="desired-rent" type="text" />
 
